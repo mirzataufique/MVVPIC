@@ -1,0 +1,13 @@
+{
+    "sftp_connection":{
+        "host": "34.193.196.83",
+        "port": "22",
+        "username": "gems",
+        "password": "gems@321"
+    },
+    "monthlyFile_path":"/home/taufique/Desktop/NodeJs/Crash API/schedular/flatfiles/monthlyfiles/",
+    "dailyFile_path":"/home/taufique/Desktop/NodeJs/Crash API/schedular/flatfiles/dailyfiles/",
+    "handback_path":"/home/taufique/Desktop/NodeJs/Crash API/schedular/handbackFiles/",
+    "pending_flat_file_path":"/UAT/pending_files/",
+    "archive_file_path":"/home/taufique/Desktop/NodeJs/Crash API/schedular/archive_files/"
+}

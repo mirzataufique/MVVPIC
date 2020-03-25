@@ -1,0 +1,68 @@
+<h2>Student Report</h2>
+<div class="row">
+    <div id="fileds" class="col-sm-3">
+        <label for="EMT_Id" class="col-sm-8 col-form-label">Student Id</label>
+        <div class="col-sm-12">
+            <input [(ngModel)]="std_id" type="text" class="form-control" placeholder="Enter Student Id"
+                name="std_id">
+        </div>
+        
+    </div>
+    <div id="fileds" class="col-sm-3">
+        <label for="EMT_Id" class="col-sm-8 col-form-label">Name</label>
+        <div class="col-sm-12">
+            <input [(ngModel)]="std_name" type="text" class="form-control" placeholder="Enter the Studdent Name"
+                name="std_email">
+        </div>
+    </div>
+
+    <div class="btnColl col-sm-1">
+        <button class="btn btn-primary" (click)="filterClick($event)">Filter</button>
+    </div>
+    <div class="btnColl col-sm-1">
+        <button class="btn btn-primary" (click)="exportClick()">Export</button>
+       
+    </div>
+</div>
+<!-- data row -->
+<div class="dataRow table-responsive">
+    <table class="table" #dt>
+        <thead>
+            <tr>
+                <th scope="col">Student ID</th>
+                <th scope="col">Student Name</th>
+                <th scope="col">Father's Name</th>
+                <th scope="col">Mother's Name</th>
+                <th scope="col">Date Of birth</th>
+                <th scope="col">Address</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Department</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+
+        <!-- <tr>helloertfghyujki{{AllData | json}}</tr> -->
+        <tbody>
+            <tr *ngFor="let std of AllData[0]">
+                <td>{{std.std_id}}</td>
+                <td>{{std.std_name}}</td>
+                <td>{{std.std_father}}</td>
+                <td>{{std.std_mother}}</td>
+                <td>{{std.std_dob}}</td>
+                <td>{{std.std_address}}</td>
+                <td>{{std.std_mobile}}</td>
+                <td>{{std.std_department}}</td>
+                <td>{{std.std_email}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+    <!-- Pagination -->
+    <div class="paginate text-right">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>
+
+<div>
+    {{AllData}}
+</div>

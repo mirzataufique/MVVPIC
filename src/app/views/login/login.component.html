@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+<body>
+  
+<div class="mainDiv">
+    <div class="Login">
+        <h2 [style.color]="hasError ? 'red': 'green '">Log In </h2>
+        <form method="post">
+            <p class="hint-text">Sign in with your social media account</p>
+
+            <div class="form-group">
+                <input [ngModel]="uname" type="text" class="form-control" #uname placeholder="Username"
+                    required="required">
+            </div>
+            {{uname.value}}
+            <div class="form-group">
+                <input [ngModel]="pass" type="password" class="form-control" #pass placeholder="Password"
+                    required="required">
+            </div>
+            {{pass.value}}
+            <input type="submit" (click)="loginUser(uname.value,pass.value)" class="btn btn-primary btn-block"
+                value="Login">
+
+            <div class="form-footer">
+                <a href="#">Forgot Your password?</a>
+            </div>
+            <span style="color: red;">{{msg}}</span>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<div class="container">
+    <h4>Addidmission Form</h4>
+    <!-- <hr style="border-top: 1.5px solid #eee;"> -->
+
+
+    <hr style="border-top: 1.5px solid #eee; width:98%;">
+    <div class="instruction">
+
+
+    </div>
+    
+    <!-- {{Student | json}}<hr>
+    {{Student.value | json}} -->
+    <!-- <input [(ngModel)]="myname" type="text">
+    {{myname}} -->
+    <hr style="border-top: 1.5px solid #eee; width:98%;">
+    <!-- first row -->
+    <form method="post">
+    <div id="fileds" class="col-sm-3">
+        <label for="std_Id" class="col-sm-8 col-form-label" hidden>Student Id</label>
+        <div class="col-sm-12">
+            <input type="text" class="form-control" id="stud_id" name="stud_id" hidden>
+        </div>
+    </div>
+    <div class="row">
+        <div id="fileds" class="col-sm-3">
+            <label for="syuden_name" class="col-sm-8 col-form-label">Student Name</label>
+            <div class="col-sm-12">
+                <input [(ngModel)]="std_name" type="text" class="form-control" id="std_Name"
+                    name="std_name" placeholder="Enter the full name">
+                  
+            </div>
+            {{std_name}}
+        </div>
+        <div id="fileds" class="col-sm-3">
+            <label for="Fathers Name" class="col-sm-8 col-form-label">Father's Name</label>
+            <div class="col-sm-12">
+                <input [(ngModel)]="std_father" type="text" class="form-control" id="Fathers Name"
+                    name="std_father" placeholder="Enter the Father Name">
+            </div>
+            {{std_father}}
+        </div>
+        <div id="fileds" class="col-sm-3">
+            <label for="Fathers Name" class="col-sm-8 col-form-label">Mother's Name</label>
+            <div class="col-sm-12">
+                <input [(ngModel)]="std_mother" type="text" class="form-control" id="Fathers Name"
+                    name="std_mother" placeholder="Enter the Mother Name">
+            </div>
+            {{std_mother}}
+        </div>
+    </div>
+    <!-- second row -->
+    <div class="row">
+        <div id="fileds" class="col-sm-3">
+            <label for="From_date" class="col-sm-12 col-form-label">Date of Birth</label>
+            <div class="col-sm-12">
+                <input [(ngModel)]="std_dob" type="date" id="select_date" class="form-control"
+                    name="std_dob" placeholder=" Date of Birth">
+                    
+            </div>
+            {{std_dob}}
+        </div>
+        <div id="fileds" class="col-sm-3">
+            <label for="Department" class="col-sm-12 col-form-label">Select Department</label>
+
+            <div class="col-sm-12">
+                <select [(ngModel)]="std_department" class="form-control" name="std_department">
+                    <option>Select</option>
+                    <option>BSc</option>
+                    <option>Commerce</option>
+                    <option>Arts</option>
+                </select>
+            </div>
+            {{std_department}}
+        </div>
+        <div id="fileds" class="col-sm-3">
+            <label for="EMT_Id" class="col-sm-8 col-form-label">Mobile Number</label>
+            <div class="col-sm-12">
+                <input [(ngModel)]="std_mobile" type="text" class="form-control" id="EMT_Id"
+                    placeholder="Enter the Mobile Number" name="std_mobile">
+            </div>
+            {{std_mobile}}
+        </div>
+
+    </div>
+    <!-- 3rd row -->
+    <div class="row">
+        <div id="fileds" class="col-sm-3">
+            <label for="EMT_Id" class="col-sm-8 col-form-label">Address</label>
+            <div class="col-sm-12">
+                <input [(ngModel)]="std_address" type="text" class="form-control"
+                    placeholder="Enter the Address" name="std_address">
+            </div>
+            {{std_address}}
+        </div>
+        <div id="fileds" class="col-sm-3">
+                <label for="EMT_Id" class="col-sm-8 col-form-label">Email</label>
+                <div class="col-sm-12">
+                    <input [(ngModel)]="std_email" type="text" class="form-control" 
+                        placeholder="Enter the Email" name="std_email">
+                </div>
+                {{std_email}}
+            </div>
+       
+        <div class="btnColl col-sm-3">
+            <button class="btn btn-primary" (click)="clickeMethod($event)">Submit</button>
+            <!-- {{greeting}} -->
+        </div>
+    </div>
+    </form>
+</div>
