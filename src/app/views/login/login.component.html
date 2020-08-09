@@ -1,33 +1,73 @@
 <html>
 <head>
 </head>
-<body>
-  
-<div class="mainDiv">
-    <div class="Login">
-        <h2 [style.color]="hasError ? 'red': 'green '">Log In </h2>
-        <form method="post">
-            <p class="hint-text">Sign in with your social media account</p>
+<!-- <body>
+    
+    <div class="mainDiv">
+        <div class="Login">
+            <h2 [style.color]="hasError ? 'red': 'green '">Log In </h2>
+            <form method="post">
+                <p class="hint-text">Sign in with your social media account</p>
 
-            <div class="form-group">
-                <input [ngModel]="uname" type="text" class="form-control" #uname placeholder="Username"
-                    required="required">
-            </div>
-            {{uname.value}}
-            <div class="form-group">
-                <input [ngModel]="pass" type="password" class="form-control" #pass placeholder="Password"
-                    required="required">
-            </div>
-            {{pass.value}}
-            <input type="submit" (click)="loginUser(uname.value,pass.value)" class="btn btn-primary btn-block"
-                value="Login">
+                <div class="form-group">
+                    <input [ngModel]="uname" type="text" class="form-control" #uname placeholder="Username"
+                        required="required">
+                </div>
+                {{uname.value}}
+                <div class="form-group">
+                    <input [ngModel]="pass" type="password" class="form-control" #pass placeholder="Password"
+                        required="required">
+                </div>
+                {{pass.value}}
+                <input type="submit" (click)="loginUser(uname.vame.value,pass.value)" class="btn btn-primary btn-block"
+                    value="Login">
 
-            <div class="form-footer">
-                <a href="#">Forgot Your password?</a>
-            </div>
-            <span style="color: red;">{{msg}}</span>
-        </form>
+                <div class="form-footer">
+                    <a href="#">Forgot Your password?</a>
+                </div>
+                <span style="color: red;">{{msg}}</span>
+            </form>
+        </div>
     </div>
-</div>
+    </body>
+    </html> -->
+
+<body>
+    <div class="wrapper">
+        <h5 class="card-title">{{username}}</h5>
+
+        <div class="welcome_text">
+            <!-- <a type="button"  floating="true" size="lg" color="fb" class="waves-light" mdbWavesEffect><mdb-icon fab icon="facebook-f"></mdb-icon></a> -->
+
+
+            <form class="welcome_form">
+                <div class="form-group">
+                    <input [(ngModel)]="username" type="text" class="form-control" #uname
+                        placeholder="Enter the User Name" name="username">
+                </div>
+                <div class="form-group">
+                    <input [ngModel]="pass" type="password" class="form-control" #pass 
+                    name="pass" placeholder="Enter the Password">
+                </div>
+                <!-- {{pass.value}} -->
+                <div class="form-group">
+                    <button class="btn btn-success" (click)="loginUser(uname.value,pass.value)"
+                        [disabled]="username == null ||''">Log in</button>
+                </div>
+                <h4 style="color:white">Continue with..</h4>
+                <div class="google-icon-wrapper">
+                    <button class="btn btn-success">Google</button>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success">Facbooke</button>
+                </div>
+                <div class="form-footer">
+                    <a href="#">Forgot Your password?</a>
+                </div>
+                <span style="color: red;">{{msg}}</span>
+            </form>
+
+        </div>
+
+    </div>
 </body>
-</html>

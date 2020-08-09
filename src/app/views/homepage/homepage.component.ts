@@ -21,5 +21,23 @@ export class HomepageComponent implements OnInit {
     // console.log("====>", this.AllData);
 
   }
+  /**
+   * signUpdeatl=[{}] */
+
+  public uname;
+  public pass;
+  public cnfpass;
+
+  // public signUpdeatails=[{
+  //   "user" :this.uname,
+  //   "pass" :this.pass,
+  //   "cnfpass": this.cnfpass
+  // }] 
+    
+ 
+
+  signUp(){
+    console.log("hello----",this.uname);
+  }
 
 }

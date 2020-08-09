@@ -11,9 +11,14 @@ export class MainControllerService {
   baseurl = 'http://localhost:3000/';
 
   getStudents() {
+    console.log("inside service====",)
     return this.http.get(this.baseurl+"stdReport/").pipe(map(res => res))
     
   } 
+  getQuizData(){
+    console.log("quiz inside main service===>");
+    return this.http.get(this.baseurl+"quiz/").pipe(map(res => res))
+  }
   getStudentsByid(std_id) {
     console.log("helloooo",std_id)
     return this.http.get(this.baseurl+"stdReport/:"+"'std_id'").pipe(map(res => res))

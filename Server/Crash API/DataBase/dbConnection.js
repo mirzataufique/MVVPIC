@@ -18,12 +18,8 @@ const mysql =require('mysql');// Importing sql Package
                 // res(db);
                 console.log('DB Connection Stablished')
             }
-            
-            
             else
             console.log('DB connnection failed \ n error:'+JSON.stringify(err,undefined,2));
-    
-    
     
    })
     module.exports = db;

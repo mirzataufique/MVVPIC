@@ -27,7 +27,7 @@ export class StdreportComponent implements OnInit {
   }
 
   AllData: any = [];
-  abc:any=[];
+  quizData:any=[];
   ngOnInit() {
     console.log("student component called")
 
@@ -45,6 +45,12 @@ export class StdreportComponent implements OnInit {
     // })
 
     // console.log("====>", this.AllData);
+    this._mainService.getQuizData().subscribe((result)=>{
+      // console.log("quiz data=====>",result['data'])
+      this.quizData.push(result['data'])
+      console.log("result",this.quizData)
+    })
+
 
   }
   std_id;
@@ -54,7 +60,8 @@ export class StdreportComponent implements OnInit {
     console.log("Filter click called",event);
     // this._csvService.getById(id: any;);
     this._mainService.getStudentsByid(this.std_id).subscribe((result) => {
-      console.log("result",result)
+   
+     
     });
   }
   exportClick(AllData:any) {

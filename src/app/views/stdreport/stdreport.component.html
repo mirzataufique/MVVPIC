@@ -54,8 +54,19 @@
                 <td>{{std.std_department}}</td>
                 <td>{{std.std_email}}</td>
             </tr>
+            <tr *ngFor="let std of quizData[0]">
+                <td>{{std.Que_Id}}</td>
+                <td>{{std.Que_Desc}}</td>
+                <td>{{std.Image_Name}}</td>
+                <td>{{std.Option1}}</td>
+                <td>{{std.Option2}}</td>
+                <td>{{std.Option3}}</td>
+                <td>{{std.Option4}}</td>
+                <td>{{std.Answer}}</td>
+            
+            </tr>
         </tbody>
-
+      
     </table>
     <!-- Pagination -->
     <div class="paginate text-right">

@@ -1,11 +1,62 @@
-.Login{
-margin-left: 400px;
+/* .Login{ */
+/* margin-left: 400px;
 text-align: center;
 width:500px;
 /* /border: 2px solid blue; */
-height: 590px;
+/* height: 590px;
 }
 .mainDiv{
 background-color: cornflowerblue;
+
+} */ 
+body{
+    font-family: "Lato";
+}
+.wrapper{
+display:flex;
+justify-content: center;
+align-items: center;
+width: 100vw;
+height: 40vw;
+background-color: #341f97;
+}
+.welcome_text{
+    width: 400px;
+    /* background-color:  ; */
+}
+.social_login{
+    width: 400px;
+    /* background-color:  ; */
+}
+.welcome_form input,
+.welcome_form button{
+    display: block;
+    width: 100%;
+    text-decoration-color: white;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+/* .welcome_form input:hover{
+    cursor: none;
+    border: none;
+} */
+.welcome_form button{
+font-size: 20px;
+padding: 10px;
+transition: 0.4s all;
+border-radius: 100px;
+
+}
+.welcome_form input{
+    margin-bottom  : 15px;
+    border-radius: 0px;
+    background-color: transparent;
+    border: none;
+border-bottom: 2px solid #fff;
+}
+.welcome_form button :focus,
+.welcome_form input :focus{
+    outline: none;
 
 }

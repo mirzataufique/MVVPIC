@@ -6,11 +6,11 @@ const cors = require('cors');
 // const csvService =  require('./Middleware/csvGenrator');
 
 //init middle-ware
-app.use(logger);
-app.use(cors({
-    origin:'http://localhost:4200'
-}));
-app.use(express.json() );
+// app.use(logger);
+// app.use(cors({
+//     origin:'http://localhost:4200'
+// }));
+app.use(express.json());
 app.use('/api/server',require('./routes/api/server'));
 app.use(routes);
 
