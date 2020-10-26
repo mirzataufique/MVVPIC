@@ -1,7 +1,61 @@
 <html>
+
 <head>
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 </head>
-<!-- <body>
+
+<body>
+  <div class="container">
+    <form action="">
+      <div class="row">
+        <div class="col">
+          <a (click)="signInWithFB()" class="fb btn">
+            <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+          </a>
+          <a href="#" class="twitter btn">
+            <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+          </a>
+          <a (click)="signInWithGoogle()" class="google btn">
+            <i class="fa fa-google fa-fw"></i> Login with Google+
+          </a>
+        </div>
+
+        <div class="vl">
+          <span class="vl-innertext">or</span>
+        </div>
+        <div class="col">
+          <div class="hide-md-lg">
+            <p>Or sign in manually:</p>
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="username" type="text" class="form-control" #uname 
+              name="username">
+          </div>
+          <div class="form-group">
+            <input [ngModel]="pass" type="password" class="form-control" #pass required name="pass"
+              >
+          </div>
+          <div class="form-group">
+            <button class="btn btn-success" (click)="loginUser(uname.value,pass.value)">Log in</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!--   
+  <div class="bottom-container">
+    <div class="row">
+      <div class="col">
+        <a href="#" style="color:white" class="btn">Sign up</a>
+      </div>
+      <div class="col">
+        <a href="#" style="color:white" class="btn">Forgot password?</a>
+      </div>
+    </div>
+  </div> -->
+  <!-- </body>
+</html> -->
+  <!-- <body>
     
     <div class="mainDiv">
         <div class="Login">
@@ -32,42 +86,24 @@
     </body>
     </html> -->
 
-<body>
-    <div class="wrapper">
+  <!-- <div class="wrapper">
         <h5 class="card-title">{{username}}</h5>
-
-        <div class="welcome_text">
-            <!-- <a type="button"  floating="true" size="lg" color="fb" class="waves-light" mdbWavesEffect><mdb-icon fab icon="facebook-f"></mdb-icon></a> -->
-
-
-            <form class="welcome_form">
+        <div class="welcome_text"> -->
+  <!-- <form class="welcome_form">
                 <div class="form-group">
                     <input [(ngModel)]="username" type="text" class="form-control" #uname
                         placeholder="Enter the User Name" name="username">
                 </div>
-                <div class="form-group">
-                    <input [ngModel]="pass" type="password" class="form-control" #pass 
-                    name="pass" placeholder="Enter the Password">
-                </div>
-                <!-- {{pass.value}} -->
-                <div class="form-group">
-                    <button class="btn btn-success" (click)="loginUser(uname.value,pass.value)"
-                        [disabled]="username == null ||''">Log in</button>
-                </div>
-                <h4 style="color:white">Continue with..</h4>
-                <div class="google-icon-wrapper">
-                    <button class="btn btn-success">Google</button>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-success">Facbooke</button>
-                </div>
-                <div class="form-footer">
-                    <a href="#">Forgot Your password?</a>
-                </div>
                 <span style="color: red;">{{msg}}</span>
-            </form>
-
+            </form> -->
+  <!-- <img src="{{ user.photoUrl }}">
+            <div>
+              <h4>{{ user.name }}</h4>
+              <p>{{ user.email }}</p>
+              <button class="btn btn-success" (click)="signOut()">Signout</button>
+            </div>
         </div>
-
-    </div>
+    </div> -->
 </body>
+
+</html>

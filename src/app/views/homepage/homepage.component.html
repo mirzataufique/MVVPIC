@@ -36,11 +36,10 @@
                     <ul class="dropdown-menu">
                         <li><a routerLink="/report" class="dropdown-item">Student Reports</a></li>
                         <li><a href="#" class="dropdown-item">Web Development</a></li>
-
                     </ul>
                 </li>
-                <li class="nav-item active"><a href="#" class="nav-link">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+                <!-- <li class="nav-item active"><a href="#" class="nav-link">Pricing</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Blog</a></li> -->
                 <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
             </ul>
             <form class="navbar-form form-inline">
@@ -49,9 +48,9 @@
                     <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
                 </div>
             </form>
+
             <ul class="nav navbar-nav navbar-right ml-auto">
                 <li class="nav-item">
-                    <a data-toggle="dropdown" routerLink="/login" class="nav-link dropdown-toggle" href="#">Login</a>
                     <ul class="dropdown-menu form-wrapper">
                         <li>
                             <form action="/examples/actions/confirmation.php" method="post">
@@ -75,12 +74,13 @@
                                     <a href="#">Forgot Your password?</a>
                                 </div>
                             </form>
-                        </li>
+                        </li><a routerLink="/login" class="nav-link dropdown-toggle" (click)="signOut()" href="#">Logout</a>
                     </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#" data-toggle="dropdown"
                         class="btn btn-primary dropdown-toggle get-started-btn mt-1 mb-1">Sign up</a>
+
                     <ul class="dropdown-menu form-wrapper">
                         <li>
 
@@ -105,14 +105,57 @@
                                     <a href="#">Terms &amp; Conditions</a></label>
                             </div>
                             <!-- <input type="submit" (click) ="signUp()" [isDisabled]="true" class="btn btn-primary btn-block" value="Sign up"> -->
-                            <button (click)="signUp()" isDisabled="true" class="btn btn-primary btn-block"
+                            <button isDisabled="true" class="btn btn-primary btn-block"
                                 value="Sign up">Sign up</button>
                         </li>
                     </ul>
                 </li>
             </ul>
+
+
+            <ul class="nav navbar-nav navbar-right ml-auto">
+                <li class="nav-item">
+                    <a data-toggle="dropdown" routerLink="/login" class="nav-link dropdown-toggle" href="#">Login</a>
+                </li>
+            </ul>
+           
+            <ul class="nav navbar-nav navbar-right ml-auto">
+                <!-- <li class="nav-item">
+                    <a routerLink="/login" class="nav-link dropdown-toggle" (click)="signOut()" href="#">Logout</a>
+                </li> -->
+            </ul>
+                <ul class="nav navbar-nav navbar-right ml-auto">
+                    <li class="nav-item"> <button onclick="document.getElementById('id01').style.display='block'" class="w3-button"><img
+                            style="border-radius: 3rem; height: 50px;width: auto;" src="{{ user.photoUrl }}"></button>
+                    </li>
+                </ul>
+            <ul class="nav navbar-nav navbar-right ml-auto">
+            </ul>
         </div>
     </nav>
+    <div> 
+        <!-- <button class="btn btn-success" (click)="signOut()">Signout</button> -->
+    </div>
+    <!-- Login Details Model------------------------------------------ -->
+    <div class="w3-container">
+        <div id="id01" class="w3-modal">
+            <div class="w3-modal-content w3-card-4">
+                <header class="w3-container w3-teal">
+                    <span onclick="document.getElementById('id01').style.display='none'"
+                        class="w3-button w3-display-topright">&times;</span>
+                        <button onclick="document.getElementById('id01').style.display='block'" class="w3-button"><img
+                            style="border-radius: 3rem; height: 100px;width: auto; background-color: snow;" src="{{ user.photoUrl }}"></button>
+                    <h2 style="color:black">{{ user.name }}</h2>
+                </header>
+                <div class="w3-container">
+                    <p>{{ user.email }}</p>
+                </div>
+                <footer class="w3-container w3-teal">
+                    <button class="btn btn-success" (click)="signOut()">Logout</button>
+                </footer>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

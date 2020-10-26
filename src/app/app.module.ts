@@ -27,9 +27,7 @@ const google_aouth_client_id: string = "1043334809034-h3gck3cp5c2boggj9hg5dhrl17
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponent,
-
-
+    routingComponent
   ],
   imports: [
     BrowserModule,
@@ -48,14 +46,11 @@ const google_aouth_client_id: string = "1043334809034-h3gck3cp5c2boggj9hg5dhrl17
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              'clientId'
-            ),
+            provider: new GoogleLoginProvider('1043334809034-h3gck3cp5c2boggj9hg5dhrl172fr5ms.apps.googleusercontent.com'),
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('clientId'
-          ),
+            provider: new FacebookLoginProvider('960288311068672'),
           },
         ],
       } as SocialAuthServiceConfig,

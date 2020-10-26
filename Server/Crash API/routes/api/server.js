@@ -400,27 +400,27 @@ router.get('/readFile',(req,res,err)=>{
     
   
     
-})
-router.get('/quiz', (req, res) => {
-    console.log("quiz called");
-    // sql = "select * FROM Employee where empId ='" + req.params.empId + "' ";
+// })
+// router.get('/quiz', (req, res) => {
+//     console.log("quiz called");
+//     // sql = "select * FROM Employee where empId ='" + req.params.empId + "' ";
 
-    db.query('SELECT * FROM Questions;', (err, rows) => {
-        if (err) {
-            console.log(err);
-            res.send({
-                "status": "400",
-                "message": "failed"
-            })
-        } else {
-            console.log(rows);
-            res.send({
-                "status": "200",
-                "data": rows
-            })
-        }
+//     db.query('SELECT * FROM Questions;', (err, rows) => {
+//         if (err) {
+//             console.log(err);
+//             res.send({
+//                 "status": "400",
+//                 "message": "failed"
+//             })
+//         } else {
+//             console.log(rows);
+//             res.send({
+//                 "status": "200",
+//                 "data": rows
+//             })
+//         }
 
-    })
+//     })
 });
 
 

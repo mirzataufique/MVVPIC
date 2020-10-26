@@ -33,7 +33,9 @@ export class AuthService {
     
     }
 
-    
+    signOut(): void {
+      this.signOut();
+    }
     
 
 
