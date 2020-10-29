@@ -52,7 +52,7 @@ form-control {
     padding-right: 35px;
     border-color: #dfe3e8;
     border-radius: 4px !important;
-    box-shadow: none
+    box-shadow: none;
 }
 .search-box .input-group-addon {
     min-width: 35px;

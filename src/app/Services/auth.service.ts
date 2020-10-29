@@ -24,12 +24,12 @@ export class AuthService {
     }
   }
   // login details=====================>
-  getLoginDetails(uname: string,pass: string){
+  getLoginDetails(username: string,pass: string){
     console.log("Login details called in service--");
-    console.log("username",uname);
+    console.log("username",username);
     console.log("Password",pass); 
      console.log("baseurl",this.baseurl)
-    return this.http.get(this.baseurl+"login/"+uname+"/"+pass+"").pipe(map(res =>res));
+    return this.http.get(this.baseurl+"login/"+username+"/"+pass+"").pipe(map(res =>res));
     
     }
 

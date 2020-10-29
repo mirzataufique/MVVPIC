@@ -40,21 +40,21 @@ export class LoginComponent implements OnInit {
  
 public username;
 public pass;
-  loginUser(uname: string, pass: string) {
-    console.log("Login button clicked--------->");
+  loginUser($event) {
+    console.log("Login button clicked--------->",);
     // this._mainService.loginStudent(uname: string, pass: string);
-    console.log("username", uname);
-    console.log("Password", pass);
+    console.log("username", this.username);
+    console.log("Password", this.pass);
    
-    if (uname != null && uname != "" || pass != null && pass != "") {
+    if (this.username != null && this.username != "" || this.pass != null && this.pass != "") {
       console.log("if condition called");
       // cheking route authentication-------------->
-      var checkUserData = this.authService.getLoginDetails(uname, pass);
-      var checkedRoute = this.authService.checkUserCredential(uname, pass);
+      var checkUserData = this.authService.getLoginDetails(this.username, this.pass);
+      var checkedRoute = this.authService.checkUserCredential(this.username, this.pass);
 
       if (checkUserData != null) {
         if (checkedRoute == true) {
-          this.authService.getLoginDetails(uname, pass);
+          this.authService.getLoginDetails(this.username, this.pass);
           this.routes.navigate(['/home']);
         }
         else {
