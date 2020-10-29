@@ -77,6 +77,7 @@ public pass;
       this.routes.navigate(['/home']);
 
     }else{
+      this.msg;
       this.routes.navigate(['/login']);
     }
   }
@@ -87,6 +88,7 @@ public pass;
       this.routes.navigate(['/home']);
 
     }else{
+      this.msg;
       this.routes.navigate(['/login']);
     }
   }

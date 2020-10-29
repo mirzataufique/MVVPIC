@@ -90,7 +90,7 @@
         <h5 class="card-title">{{username}}</h5>
         <div class="welcome_text"> -->
   <!-- <form class="welcome_form">
-                <div class="form-group">
+                <div c{{pass}}  lass="form-group">
                     <input [(ngModel)]="username" type="text" class="form-control" #uname
                         placeholder="Enter the User Name" name="username">
                 </div>
@@ -122,7 +122,7 @@
                   </div>
                   <input  [(ngModel)]="username" type="text" class="form-control" name="username" placeholder="Username" required="required">
               </div>
-              hiiii{{username}}
+              <!-- hiiii{{username}} -->
           </div>
       <div class="form-group">
               <div class="input-group">
@@ -133,11 +133,15 @@
                   </div>
                   <input [(ngModel)]="pass" type="password" class="form-control" name="password" placeholder="Password" required="required">
               </div>
-              {{pass}}
+              <!-- {{pass}} -->
           </div>        
           <div class="form-group">
               <button type="submit" (click)="loginUser($event)" class="btn btn-success btn-block login-btn">Sign in</button>
           </div>
+          <div class="form-group">
+            <span style="color: red;">{{msg}}</span>
+          </div>
+          
           <div class="clearfix">
               <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
               <a href="#" class="float-right text-success">Forgot Password?</a>

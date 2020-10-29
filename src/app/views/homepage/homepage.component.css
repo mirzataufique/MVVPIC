@@ -46,6 +46,11 @@ form-control {
     color:white;
     font-size: 1.1em;
 }
+.navbar .nav li  :hover {
+    /* color: #888; */
+    color:pink;
+    font-size: 1.1em;
+}
 .search-box {
     position: relative;
 }	
@@ -91,6 +96,7 @@ form-control {
 .navbar .dropdown-item i {
     font-size: 16px;
     min-width: 22px;
+    background-color: none;
 }
 .navbar ul.nav li.active a, .navbar ul.nav li.open > a {
     background: transparent !important;
@@ -101,13 +107,14 @@ form-control {
     margin-bottom: 8px;
 }
 .navbar ul.nav li.open > a.get-started-btn {
-    color: #fff;
+    /* color: #fff; */
     background: #31bfb1 !important;
 }
 .navbar .dropdown-menu {
     border-radius: 1px;
     border-color: #e5e5e5;
     box-shadow: 0 2px 8px rgba(0,0,0,.05);
+    background-color:darkgreen;
 }
 .navbar .nav .dropdown-menu li {
     color: #999;
@@ -214,7 +221,7 @@ form-control {
     background-color: snow!important;
 }
 .w3-hover-teal:hover {
-background-color: snow;
+background-color: red;
 }
 .w3-modal-content{
     margin: -35px 861px;
