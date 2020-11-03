@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
     //   this.user = user;
     //   this.loggedIn = (user != null);
     // });
+  
   }
  
 public username;
@@ -92,6 +93,9 @@ public pass;
       this.routes.navigate(['/login']);
     }
   }
+  
+  
+  
  
   // signOut(): void {
   //   this.authService.signOut();

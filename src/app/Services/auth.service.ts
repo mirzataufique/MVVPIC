@@ -8,7 +8,7 @@ import { map, catchError, tap } from 'rxjs/operators';
 export class AuthService {
 
   constructor(private http: HttpClient) { }
-  baseurl = 'http://localhost:3000/';
+  baseurl = 'http://localhost:3000/api/';
 
     //route auth checking======================>
   checkUserCredential(uname: string, pass: string){
@@ -24,7 +24,7 @@ export class AuthService {
     }
   }
   // login details=====================>
-  getLoginDetails(username: string,pass: string){
+  getLoginDetails(username: string,pass: string ){
     console.log("Login details called in service--");
     console.log("username",username);
     console.log("Password",pass); 

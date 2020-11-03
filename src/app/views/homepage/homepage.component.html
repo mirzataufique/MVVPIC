@@ -74,7 +74,9 @@
                                     <a href="#">Forgot Your password?</a>
                                 </div>
                             </form>
-                        </li><a routerLink="/login" class="nav-link dropdown-toggle" (click)="signOut()" href="#">Logout</a>
+                        </li>
+                        <!-- <a routerLink="/login" class="nav-link dropdown-toggle" (click)="signOut()"
+                            href="#">Logout</a> -->
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -105,8 +107,7 @@
                                     <a href="#">Terms &amp; Conditions</a></label>
                             </div>
                             <!-- <input type="submit" (click) ="signUp()" [isDisabled]="true" class="btn btn-primary btn-block" value="Sign up"> -->
-                            <button isDisabled="true" class="btn btn-primary btn-block"
-                                value="Sign up">Sign up</button>
+                            <button isDisabled="true" class="btn btn-primary btn-block" value="Sign up">Sign up</button>
                         </li>
                     </ul>
                 </li>
@@ -118,26 +119,31 @@
                     <a data-toggle="dropdown" routerLink="/login" class="nav-link dropdown-toggle" href="#">Login</a>
                 </li>
             </ul>
-           
+
             <ul class="nav navbar-nav navbar-right ml-auto">
                 <!-- <li class="nav-item">
                     <a routerLink="/login" class="nav-link dropdown-toggle" (click)="signOut()" href="#">Logout</a>
                 </li> -->
             </ul>
-                <ul class="nav navbar-nav navbar-right ml-auto">
-                    <li class="nav-item"> <button onclick="document.getElementById('id01').style.display='block'" class="w3-button"><img
+            <ul class="nav navbar-nav navbar-right ml-auto">
+                <li class="nav-item"> <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#UserDetails">
+                        <img style="border-radius: 3rem;height: 40px;width: auto;" src="{{ user.photoUrl }}">
+                    </button>
+                </li>
+                <!-- <li class="nav-item"></li> <button onclick="document.getElementById('id01').style.display='block'" class="w3-button"><img
                             style="border-radius: 3rem; height: 50px;width: auto;" src="{{ user.photoUrl }}"></button>
-                    </li>
-                </ul>
+                    </li> -->
+            </ul>
             <ul class="nav navbar-nav navbar-right ml-auto">
             </ul>
         </div>
     </nav>
-    <div> 
+    <div>
         <!-- <button class="btn btn-success" (click)="signOut()">Signout</button> -->
     </div>
     <!-- Login Details Model------------------------------------------ -->
-    <div class="w3-container">
+    <!-- <div class="w3-container">
         <div id="id01" class="w3-modal">
             <div class="w3-modal-content w3-card-4">
                 <header class="w3-container w3-teal">
@@ -153,6 +159,32 @@
                 <footer class="w3-container w3-teal">
                     <button class="btn btn-success" (click)="signOut()">Logout</button>
                 </footer>
+            </div>
+        </div>
+    </div> -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="UserDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLongTitle">{{user.name}}</h4>
+                   
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img style="border-radius: 3rem;height: 40px;width: auto;" src="{{ user.photoUrl }}">
+                    <h4 class="modal-title" id="exampleModalLongTitle">{{user.email}}</h4>
+                    
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                    <button type="button" class="btn btn-primary">Log out</button>
+                </div>
             </div>
         </div>
     </div>

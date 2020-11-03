@@ -11,15 +11,15 @@ import { map, catchError, tap } from 'rxjs/operators';
 export class StudentListService {
 
 
- baseurl = 'http://localhost:3000/';
+ baseurl = 'http://localhost:3000/api/';
 
 
  constructor(private http: HttpClient) { }
 
-  // getStudents() {
-  //   return this.http.get(this.baseurl+"stdReport/").pipe(map(res => res))
+  getStudents() {
+    return this.http.get(this.baseurl+"stdReport/").pipe(map(res => res))
     
-  // }
+  }
 
 
 }

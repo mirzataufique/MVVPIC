@@ -45,11 +45,6 @@ export class StdreportComponent implements OnInit {
     // })
 
     // console.log("====>", this.AllData);
-    this._mainService.getQuizData().subscribe((result)=>{
-      // console.log("quiz data=====>",result['data'])
-      this.quizData.push(result['data'])
-      console.log("result",this.quizData)
-    })
 
 
   }

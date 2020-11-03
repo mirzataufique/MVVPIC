@@ -1,14 +1,17 @@
 const express = require('express');
 const router = express.Router();
 var json2csv = require('json2csv');
+const createUser = require('../../Middleware/services/User/user.Controller')
 var fs = require('fs');
 var jwt = require('jsonwebtoken');
+const cors =  require('cors');
+
 var bcrypt = require('bcryptjs');
 const Cryptr = require('cryptr');
 
 //Middlewares=====>
 const upload = require('../../Middleware/services/fileUpload')
-const db = require('../../DataBase/dbConnection');
+const db = require('../../Config/dbConnection');
 const csv = require('../../Middleware/services/csvGenerate');
 const mail = require('../../Middleware/services/mailer');
 const xlsx = require('../../Middleware/services/readXlsx');
@@ -21,80 +24,18 @@ console.log('Middleware api/router called');
 
 // =============node mailer===================================>
 var CryptoJS = require("crypto-js");
-router.get('/login/:username/:password', (req, res) => {
-    console.log("login API Called=============>");
-    console.log('req encripted userdetails--->', req.params.username, req.params.password);
-//     var data=[{
-//         "username": req.params.username,
-//         "password": req.params.password  
-//     }]
-//     var data = [{id: 1}, {id: 2}]
-//     var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(data), 'secret key 123');
-//     console.log("encdata------------>",ciphertext);
-//     var bytes  = CryptoJS.AES.decrypt(ciphertext.toString(), 'secret key 123');
-// var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-// console.log("decr data",decryptedData);
+router.post('/createUsers',(req,res)=>{
+    // res = createUser._createService()
+    // console.log("ressssssss",res);
+});
+
+
     
-    // var dcrpass = CryptoJS.AES.decrypt(password, 'secret key 123');
-    // console.log("dec pass--->", dcrpass)
-    // var decrypteduser = JSON.parse(dcrpass.toString(CryptoJS.enc.Utf8));
-    // // console.log("decripted usrname-->", decrypteduser);
-    // console.log("decripted usrname-->", dcrpass);
-    // // encrypt_user='hello';
-    // encrypt_pass=req.params.password;
-
-    // cryptr = new Cryptr('mirza');
-    // var decriptUser=cryptr.encrypt(encrypt_user);
-    // console.log('--->',decriptUser)
-    // var encriptPass =cryptr.decrypt(encrypt_pass)
-    // console.log('decript--->',encriptPass);
-
-    // console.log("deripted username-->",username);
-
-
-    db.query('select * FROM login', (err, rows) => {
-        console.log('login data from database---->', rows[0].username, rows[0].password);
-        // if (err) {
-        //     // console.log(res.status(400), err);
-        //     // res.status(400).json({error: err});
-        //     res.send({
-        //         "status": "400",
-        //         "message": "failed"
-        //     })
-        // } else {
-        //     // console.log('data'+JSON.stringify(rows));         
-        //     //res.status(200).json({Report:rows});    
-        //     res.send({
-        //         "status": "200",
-        //         "data": rows
-
-        //     })
-        // }
-
-        if (rows[0].username == req.params.username && rows[0].password == req.params.password) {
-            console.log('successfully login');
-            res.send({
-                "status": true,
-                "msg": 'succesfull loged-in'
-            })
-        }
-        else {
-            console.log('username & password does not match');
-            res.send({
-                "status": false,
-                "msg": 'username & password does not match'
-            })
-        }
-
-
-
-    })
-})
 router.post('/register', (req, res) => {
     console.log("registration PI  called==========>")
     data = req.body;
     console.log("data inside PAI-->", data)
-    db.query('INSERT INTO login SET ?', data, (err) => {
+    db.query('INSERT INTO student SET ?', data, (err) => {
         if (err) {
             console.log("failed", err);
             res.send({
@@ -104,7 +45,6 @@ router.post('/register', (req, res) => {
         }
         else {
             console.log("Succesfully inserted");
-
             res.send({
                 'status': true,
                 'msg': "Succesfully inserted"
@@ -113,7 +53,9 @@ router.post('/register', (req, res) => {
         }
     })
 });
-
+router.post('/signup',(req,res)=>{
+let useData
+})
 router.get('/mail', (req, res, err) => {
     console.log("nodemailer called------------->");
     // if (err) {
@@ -352,6 +294,7 @@ router.put('/stdUpdate', (req, res) => {
 
 //=============================== File Uploading =================================>
 const fileupload = require('express-fileupload');
+const { create } = require('domain');
 router.use(fileupload())// middleware to upaload data
 
 router.post('/fileupload', (req, res, next) => {

@@ -51,10 +51,12 @@ export class MainControllerService {
     return this.http.get(this.baseurl+"stdReport/:"+"'std_id'").pipe(map(res => res))
     
   }
+  
   post(stdData){
     console.log("stdData- in service--->",stdData)
     // return this.http.post(this.baseurl+"register/",JSON.stringify(sdtData),).pipe(map(res=>res))
-    return this.http.post(this.baseurl+"nn",JSON.stringify(stdData)).pipe(map(res=>res))
+      return this.http.post(this.baseurl+"register/",JSON.stringify(stdData)).pipe(map(res=>res))
+
   }
   
 }

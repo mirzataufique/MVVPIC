@@ -1,5 +1,5 @@
 const xlsx = require('xlsx');
-const db = require('../../DataBase/dbConnection');
+const db = require('../../Config/dbConnection');
 module.exports.readXlsx = (req, res,err) => {
     console.log('inside service---->');
    
