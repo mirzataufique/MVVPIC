@@ -8,6 +8,7 @@ import { AppRoutingModule, routingComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
 // import { AuthGuard } from './auth.guard';
 import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const google_aouth_client_id: string = "1043334809034-h3gck3cp5c2boggj9hg5dhrl172fr5ms.apps.googleusercontent.com";
 
 // let config = new AuthServiceConfig([
@@ -36,7 +37,8 @@ const google_aouth_client_id: string = "1043334809034-h3gck3cp5c2boggj9hg5dhrl17
     HttpClientModule,
     RouterModule,
     NgxPaginationModule,
-    SocialLoginModule
+    SocialLoginModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {

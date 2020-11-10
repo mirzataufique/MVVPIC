@@ -17,13 +17,13 @@ const {createPool} = require('mysql')
 
 
 
-            host    :'localhost',
-            user    :'root',
-            password:'root@123',
-            database:'Student_DB',
-            debug   :false,
-            multipleStatements:true,
-            createConnection: 10,
+            // host    :'localhost',
+            // user    :'root',
+            // password:'root@123',
+            // database:'Student_DB',
+            // debug   :false,
+            // multipleStatements:true,
+            // createConnection: 10,
 
         
         });

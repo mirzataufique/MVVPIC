@@ -128,7 +128,7 @@
             <ul class="nav navbar-nav navbar-right ml-auto">
                 <li class="nav-item"> <button type="button" class="btn btn-primary" data-toggle="modal"
                         data-target="#UserDetails">
-                        <img style="border-radius: 3rem;height: 40px;width: auto;" src="{{ user.photoUrl }}">
+                        <img style="border-radius: 3rem;height: 40px;width: auto;" src="{{ user?.photoUrl }}">
                     </button>
                 </li>
                 <!-- <li class="nav-item"></li> <button onclick="document.getElementById('id01').style.display='block'" class="w3-button"><img
@@ -177,7 +177,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <img style="border-radius: 3rem;height: 40px;width: auto;" src="{{ user.photoUrl }}">
+                    <img style="border-radius: 3rem;height: 40px;width: auto;" src="{{ user?.photoUrl }}">
                     <h4 class="modal-title" id="exampleModalLongTitle">{{user.email}}</h4>
                     
                 </div>

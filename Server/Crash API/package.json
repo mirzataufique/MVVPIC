@@ -4,7 +4,7 @@
   "description": "Infra Team Info App",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon demo.js"
+    "start": "nodemon app.js"
   },
   "author": "Taufique Al_Mirza",
   "license": "ISC",
