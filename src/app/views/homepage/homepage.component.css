@@ -3,7 +3,6 @@ form-control {
     font-weight: normal;
     font-size: 13px;
 }
-
 .form-control:focus {
     border-color: #33cabb;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
@@ -12,9 +11,12 @@ form-control {
 .navbar-header.col {
     padding: 0 !important;
 }
-
+html, body {
+    height: auto;
+    /* padding-bottom:5%; */
+}
 .navbar {
-    background: green;
+    background: darkgreen;
     color: white;
     padding-left: 16px;
     padding-right: 16px;
@@ -53,13 +55,13 @@ form-control {
 .navbar .nav li a {
     /* color: #888; */
     color: white;
-    font-size: 1.1em;
+    font-size: 1.0rem;
 }
 
 .navbar .nav li :hover {
     /* color: #888; */
-    color: rgb(180, 5, 5);
-    font-size: 1.1em;
+    /* color: rgb(180, 5, 5); */
+    font-size: 1.1rem;
 }
 
 .search-box {
@@ -81,7 +83,7 @@ form-control {
     right: 0;
     z-index: 9;
     padding: 7px;
-    height: 100%;
+    /* height: 100%; */
 }
 
 .search-box i {
@@ -91,7 +93,7 @@ form-control {
 
 .navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
     color: #fff;
-    background: green;
+    background: darkgreen;
     padding-top: 8px;
     padding-bottom: 4px;
     vertical-align: middle;
@@ -115,12 +117,15 @@ form-control {
 .navbar .dropdown-item i {
     font-size: 16px;
     min-width: 22px;
-    background-color: none;
+    /* background-color: none; */
 }
-
-.navbar .dropdown-item:active{
+/* .dropdown-item.active, .dropdown-item:active{
     background-color: none;
-    color: red;
+} */
+.navbar .dropdown-item:active{
+    background-color: #21d192 !important;
+    /* color: red; */
+    color:none;
 }
 .navbar ul.nav li.active a, .navbar ul.nav li.open>a {
     background: transparent !important;
@@ -151,6 +156,8 @@ form-control {
 
 .navbar .nav .dropdown-menu li a, .navbar .nav .dropdown-menu li a:hover, .navbar .nav .dropdown-menu li a:focus {
     padding: 8px 20px;
+    font-size: medium;
+    background-color: none;
     line-height: normal;
 }
 
@@ -267,7 +274,7 @@ form-control {
 }
 
 .w3-modal-content:hover {
-    background-color: snow!important;
+    /* background-color: darkgreen; */
 }
 
 .w3-hover-teal:hover {
@@ -304,3 +311,29 @@ form-control {
         display: block;
     }
 }
+
+/* =============>header fix */
+/* .fixed-header {
+  position: fixed;
+  z-index:999;
+  height: auto;
+  width:100%;
+  margin-top:none;
+}
+
+#frugalmap {
+  height: 300px;
+  width: 100%;
+  top: 50px;
+  position: relative;
+}
+
+.mat-elevation-z5 {
+  position: relative;
+}
+
+.sticky {
+  position: fixed;
+  /* top: 50px; 
+} 
+*/

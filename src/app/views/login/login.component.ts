@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/Services/auth.service';
+import { UserService } from '../../Services/user.service';
 import { Router } from '@angular/router';
-import { SocialAuthService,SocialUser } from "angularx-social-login";
+import { SocialAuthService, SocialUser } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
-// import { SocialUser } from "angularx-social-login"; 
-import {MainControllerService} from "../../Services/mainController.service"
+
+
 
 @Component({
   selector: 'app-login',
@@ -15,90 +16,88 @@ import {MainControllerService} from "../../Services/mainController.service"
 export class LoginComponent implements OnInit {
   user: SocialUser;
   loggedIn: boolean;
-  constructor(private authService: AuthService, private routes: Router,private socialService: SocialAuthService,private _mainService: MainControllerService) { }
-  msg;
+  constructor(private authService: AuthService, private routes: Router, private socialService: SocialAuthService, private userService: UserService) { }
+  public msg;
+  public UserData
   public hasErrorhas = "true";
   // ==================== Use for Rout authentication
-  // checkAuth(uname: string, pass: string) {
-  //   console.log("username",uname);
-  //   console.log("Password",pass);
-  //   var output= this.logService.checkUserCredential(uname,pass);
-  //   console.log("output from services",output)
-  //   if (output === true) {
-  //     this.routes.navigate(['./home']);
-
-  //   }else{
-  //     this.msg="Invalid credintial";
-  //   }
-  // }
+  Alldata: any;
   ngOnInit() {
-    // this.socialService.authState.subscribe((user) => {
-    //   this.user = user;
-    //   this.loggedIn = (user != null);
-    // });
-  
-  }
- 
-public username;
-public pass;
-  loginUser($event) {
-    console.log("Login button clicked--------->",);
-    // this._mainService.loginStudent(uname: string, pass: string);
-    console.log("username", this.username);
-    console.log("Password", this.pass);
-   
-    if (this.username != null && this.username != "" || this.pass != null && this.pass != "") {
-      console.log("if condition called");
-      // cheking route authentication-------------->
-      var checkUserData = this.authService.getLoginDetails(this.username, this.pass);
-      var checkedRoute = this.authService.checkUserCredential(this.username, this.pass);
+    this.socialService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+    });
 
-      if (checkUserData != null) {
-        if (checkedRoute == true) {
-          this.authService.getLoginDetails(this.username, this.pass);
-          this.routes.navigate(['/home']);
-        }
-        else {
-          
-          this.routes.navigate(['/login']);
-
-          this.msg = "Invalid Credential Please Try agian...!";
-        }
-      }
-    }
-    else {
-      this.msg = "Invalid Credential Please Try agian...!";
-    }
+    //UserData------------------------------==>
+    this.userService.getTest().subscribe((result => {
+      this.Alldata = result;
+      console.log("inside login compoent", this.Alldata)
+    }));
   }
+  loginResMsg: any;
+  signupResMsg: any;
+  logIn(loginData) {
+    let data = {
+      "userType": loginData.loginType,
+      "userEmail": loginData.userName,
+      "userPassword": loginData.loginPassword
+    }
+    // console.log("inside login-->", data,)
+    this.authService.login(data).subscribe((result) => {
+      this.loginResMsg = result;
+      this.routes.navigate(['/dashboard']);
+    },
+      (error) => {
+        console.log('An unexpected error occured', error.statusText);
+        this.loginResMsg = error.statusText;
+        this.routes.navigate(['/login']);
+      }, () => {
+        console.log('Authentication completed');
+      });
+  };
+
+
+  singUp(usersData) {
+    console.log("signup button clicked--------->", usersData);
+    this.userService.signUp(usersData).subscribe((result) => {
+      this.signupResMsg = result.message;
+      this.routes.navigate(['/login']);
+      console.log("status", this.signupResMsg)
+    },
+      (error) => {
+        console.log('An unexpected error occured', error.error.message);
+        this.signupResMsg = error.error.message;
+      }, () => {
+        console.log('completed');
+      });
+
+  };
+
   // Social login =========================================>
   signInWithGoogle(): void {
     console.log("sign with google.....")
-    if(GoogleLoginProvider.PROVIDER_ID!=null || ''){
-      this.socialService.signIn(GoogleLoginProvider.PROVIDER_ID);
-      this.routes.navigate(['/home']);
-
-    }else{
+    if (GoogleLoginProvider.PROVIDER_ID != null || '') {
+      this.socialService.signIn(GoogleLoginProvider.PROVIDER_ID).then(x => {
+        console.log("succesfully", x);
+        this.routes.navigate(['/home']);
+      })
+    } else {
       this.msg;
       this.routes.navigate(['/login']);
     }
   }
   signInWithFB(): void {
     console.log("sign with fb ")
-    if(FacebookLoginProvider.PROVIDER_ID != null || ''){
-      this.socialService.signIn(FacebookLoginProvider.PROVIDER_ID);
-      this.routes.navigate(['/home']);
-
-    }else{
+    if (FacebookLoginProvider.PROVIDER_ID != null || '') {
+      this.socialService.signIn(FacebookLoginProvider.PROVIDER_ID).then(x => {
+        console.log("succesfully", x);
+        alert("succesfully Login click ok to navigate the home page")
+        this.routes.navigate(['/dashboard']);
+      })
+    } else {
       this.msg;
       this.routes.navigate(['/login']);
     }
-  }
-  
-  
-  
- 
-  // signOut(): void {
-  //   this.authService.signOut();
-  // }
 
+  }
 }

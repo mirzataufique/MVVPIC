@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,HostListener} from '@angular/core';
 import {AuthService} from '../../Services/auth.service'
 import { SocialAuthService,SocialUser } from "angularx-social-login";
-import { StudentListService } from 'src/app/Services/student-list.service';
+
 
 @Component({
   selector: 'app-homepage',
@@ -11,48 +11,28 @@ import { StudentListService } from 'src/app/Services/student-list.service';
 export class HomepageComponent implements OnInit {
   public AllData = [];
 
-  constructor(private _studentService: StudentListService, private authService: AuthService,private socialService: SocialAuthService) { }
-
-  user: SocialUser;
-  loggedIn: boolean;
-
-
-  public uname;
-  public pass;
-  public cnfpass;
-
-  ngOnInit() {
+  constructor(private authService: AuthService,private socialService: SocialAuthService) { 
     this.socialService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
     });
-    // // this._studentService.getStudents().subscribe((data) => {
-    // //   // console.log("my data-- ", JSON.stringify(data))
-    // //   this.AllData = data;
-    // })
-
-    // console.log("====>", this.AllData);
-    // this.authService.authState.subscribe((user) => {
-    //   this.user = user;
-    //   this.loggedIn = (user != null);
-    // });
-
   }
-  /**
-   * signUpdeatl=[{}] */
 
+  user: SocialUser;
+  loggedIn: boolean;
 
-  // public signUpdeatails=[{
-  //   "user" :this.uname,
-  //   "pass" :this.pass,
-  //   "cnfpass": this.cnfpass
-  // }] 
-    
+  ngOnInit() {
+  }
  
+ isSticky: boolean = false;
 
+  @HostListener('window:scroll', ['$event'])
+  checkScroll() {
+    this.isSticky = window.pageYOffset >= 250;
+  }
   signOut(): void {
-    console.log("insde signout method---")
     this.authService.signOut();
   }
+
 
 }

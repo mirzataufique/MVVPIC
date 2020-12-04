@@ -1,155 +1,156 @@
 <html>
 
 <head>
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 </head>
 
 <body>
-  <!-- <div class="container">
-    <form action="">
-      <div class="row">
-        <div class="col">
-          <a (click)="signInWithFB()" class="fb btn">
-            <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-          </a>
-          <a href="#" class="twitter btn">
-            <i class="fa fa-twitter fa-fw"></i> Login with Twitter
-          </a>
-          <a (click)="signInWithGoogle()" class="google btn">
-            <i class="fa fa-google fa-fw"></i> Login with Google+
-          </a>
+  <div class="login-form">
+    <form #loginForm="ngForm">
+      <h2 class="text-center">Sign in</h2>
+      <div class="text-center social-btn">
+        <a (click)="signInWithFB()" class="btn btn-primary btn-block"><i class="fa fa-facebook"></i> Sign in with
+          <b>Facebook</b></a>
+        <a href="#" class="btn btn-info btn-block"><i class="fa fa-twitter"></i> Sign in with <b>Twitter</b></a>
+        <a (click)="signInWithGoogle()" class="btn btn-danger btn-block"><i class="fa fa-google"></i> Sign in with
+          <b>Google</b></a>
+      </div>
+      <div class="or-seperator"><i>or</i></div>
+      <div class="form-group">
+        <!-- <div class="input-group-prepend">
+          </div> -->
+        <label for="Department" class="col-sm-12 col-form-label">*Login Type</label>
+        <div class="col-sm-12">
+          <select [(ngModel)]="loginType" class="form-control" name="loginType" #logintp="ngModel" required>
+            <option>Select..</option>
+            <option>admin</option>
+            <option>student</option>
+          </select>
         </div>
-
-        <div class="vl">
-          <span class="vl-innertext">or</span>
+        <span class="text-danger" *ngIf="(logintp.touched || loginForm.submitted) && logintp.errors?.required">
+          Login type is required
+        </span>
+        <div class="col-sm-12">
+          <label for="Department" class="col-sm-12 col-form-label">*User Name</label>
+          <input [(ngModel)]="userName" type="text" class="form-control" name="userName" placeholder="User Name"
+            #uName="ngModel" required>
         </div>
-        <div class="col">
-          <div class="hide-md-lg">
-            <p>Or sign in manually:</p>
-          </div>
-          <div class="form-group">
-            <input [(ngModel)]="username" type="text" class="form-control" #uname 
-              name="username">
-          </div>
-          <div class="form-group">
-            <input [ngModel]="pass" type="password" class="form-control" #pass required name="pass"
-              >
-          </div>
-          <div class="form-group">
-            <button class="btn btn-success" (click)="loginUser(uname.value,pass.value)">Log in</button>
-          </div>
+        <span class="text-danger" *ngIf="(uName.touched || loginForm.submitted) && uName.errors?.required">
+          User Id is required
+        </span>
+        <div class="col-sm-12">
+          <label for="Department" class="col-sm-12 col-form-label">*Password</label>
+          <input [(ngModel)]="loginPassword" type="password" class="form-control" name="loginPassword"
+            placeholder="Password" #pass="ngModel" required>
         </div>
+        <span class="text-danger" *ngIf="(pass.touched || loginForm.submitted) && pass.errors?.required">
+          Password can't be blank
+        </span>
+      </div>
+      <div class="col-sm-12">
+        <button type="submit" (click)="logIn(loginForm.value)" class="btn btn-success btn-block login-btn"
+          [disabled]="!loginForm.valid">Sign
+          in</button>
+      </div>
+      <div class="col-sm-12">
+        <span style="color: red; text-align: center;">{{loginResMsg}}</span>
+      </div>
+      <div class="clearfix">
+        <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
+        <a href="#" class="float-right text-success">Forgot Password?</a>
       </div>
     </form>
-  </div> -->
-  <!--   
-  <div class="bottom-container">
-    <div class="row">
-      <div class="col">
-        <a href="#" style="color:white" class="btn">Sign up</a>
-      </div>
-      <div class="col">
-        <a href="#" style="color:white" class="btn">Forgot password?</a>
-      </div>
+    <div class="hint-text">Don't have an account? <button type="button" class="btn btn-primary" data-toggle="modal"
+        data-target="#exampleModalLong">
+        Register Now
+      </button>
     </div>
-  </div> -->
-  <!-- </body>
-</html> -->
-  <!-- <body>
-    
-    <div class="mainDiv">
-        <div class="Login">
-            <h2 [style.color]="hasError ? 'red': 'green '">Log In </h2>
-            <form method="post">
-                <p class="hint-text">Sign in with your social media account</p>
-
-                <div class="form-group">
-                    <input [ngModel]="uname" type="text" class="form-control" #uname placeholder="Username"
-                        required="required">
-                </div>
-                {{uname.value}}
-                <div class="form-group">
-                    <input [ngModel]="pass" type="password" class="form-control" #pass placeholder="Password"
-                        required="required">
-                </div>
-                {{pass.value}}
-                <input type="submit" (click)="loginUser(uname.vame.value,pass.value)" class="btn btn-primary btn-block"
-                    value="Login">
-
-                <div class="form-footer">
-                    <a href="#">Forgot Your password?</a>
-                </div>
-                <span style="color: red;">{{msg}}</span>
-            </form>
-        </div>
-    </div>
-    </body>
-    </html> -->
-
-  <!-- <div class="wrapper">
-        <h5 class="card-title">{{username}}</h5>
-        <div class="welcome_text"> -->
-  <!-- <form class="welcome_form">
-                <div c{{pass}}  lass="form-group">
-                    <input [(ngModel)]="username" type="text" class="form-control" #uname
-                        placeholder="Enter the User Name" name="username">
-                </div>
-                <span style="color: red;">{{msg}}</span>
-            </form> -->
-  <!-- <img src="{{ user.photoUrl }}">
-            <div> 
-              <h4>{{ user.name }}</h4>
-              <p>{{ user.email }}</p>
-              <button class="btn btn-success" (click)="signOut()">Signout</button>
-            </div>
-        </div>
-    </div> -->
-    <div class="login-form">
-      <form>
-          <h2 class="text-center">Sign in</h2>		
-          <div class="text-center social-btn">
-              <a (click)="signInWithFB()" class="btn btn-primary btn-block"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>
-              <a href="#" class="btn btn-info btn-block"><i class="fa fa-twitter"></i> Sign in with <b>Twitter</b></a>
-        <a (click)="signInWithGoogle()" class="btn btn-danger btn-block"><i class="fa fa-google"></i> Sign in with <b>Google</b></a>
-          </div>
-      <div class="or-seperator"><i>or</i></div>
-          <div class="form-group">
-            <div class="input-group">                
-                  <div class="input-group-prepend">
-                      <span class="input-group-text">
-                          <span class="fa fa-user"></span>
-                      </span>                    
-                  </div>
-                  <input  [(ngModel)]="username" type="text" class="form-control" name="username" placeholder="Username" required="required">
-              </div>
-              <!-- hiiii{{username}} -->
-          </div>
-      <div class="form-group">
-              <div class="input-group">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text">
-                          <i class="fa fa-lock"></i>
-                      </span>                    
-                  </div>
-                  <input [(ngModel)]="pass" type="password" class="form-control" name="password" placeholder="Password" required="required">
-              </div>
-              <!-- {{pass}} -->
-          </div>        
-          <div class="form-group">
-              <button type="submit" (click)="loginUser($event)" class="btn btn-success btn-block login-btn">Sign in</button>
-          </div>
-          <div class="form-group">
-            <span style="color: red;">{{msg}}</span>
-          </div>
-          
-          <div class="clearfix">
-              <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
-              <a href="#" class="float-right text-success">Forgot Password?</a>
-          </div>  
-          
-      </form>
-      <div class="hint-text">Don't have an account? <a href="#" class="text-success">Register Now!</a></div>
   </div>
+
+
+
+  <!-- ========================ngModel -->
+
+  <form #signupForm="ngForm">
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <p>Please fill the following form to create your account! </p>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="form-group">
+            <img src="http://via.placeholder.com/150x150" style="border-radius:50%; margin-left: 30%; margin-top:3px" />
+            <input type="file" [(ngModel)]="userPhoto" id="myFile" name="userPhoto" style="margin-top:3px"
+              (change)="fileProgress($event)">
+          </div>
+          <div class="modal-body">
+            <div id="fileds" class="col-sm-12">
+              <label for="Department" class="col-sm-12 col-form-label">User Type</label>
+              <div class="form-group">
+                <select [(ngModel)]="userType" class="form-control" name="userType" #signuptyp="ngModel" required>
+                  <option>Select..</option>
+                  <option>Admin</option>
+                  <option>Student</option>
+                </select>
+                <span class="text-danger" *ngIf="(signuptyp.touched || signupForm.submitted) && signuptyp.errors?.required">
+                  Login type is required
+                </span>
+              </div>
+            </div>
+            <div>
+
+              <div class="form-group">
+                <input type="text" [(ngModel)]="userEmail" name="userEmail" class="form-control" placeholder="Email"
+                  #EmailId ="ngModel" required>
+              </div>
+              <span class="text-danger" *ngIf="(EmailId.touched || signupForm.submitted) && EmailId.errors?.required">
+                Email can't be blank
+              </span>
+
+              <div class="form-group">
+                <input type="password" [(ngModel)]="userPassword" name="userPassword" class="form-control"
+                  placeholder="Password" #signuppass="ngModel" required>
+              </div>
+              {{userPassword}}
+              <span class="text-danger" *ngIf="(signuppass.touched || signupForm.submitted) && signuppass.errors?.required">
+                Password is required
+              </span>
+              <div class="form-group">
+                <input type="password" [(ngModel)]="cnfpass" name="cnfpass" class="form-control"
+                  placeholder="Confirm Password" #connfirmpass="ngModel" required>
+              </div>
+              {{cnfpass}}
+              <span class="text-danger"
+                *ngIf="(connfirmpass.touched || signupForm.submitted) && connfirmpass.errors?.required">
+                Confirm password is required
+              </span>
+              <span class="text-danger">
+              {{msg}}
+          
+            </span>
+              <div class="form-group">
+                <label class="checkbox-inline"><input type="checkbox" name="terms" required="required"> I accept the
+                  <a href="#">Terms &amp; Conditions</a></label>
+              </div>
+              <div class="col-sm-12">
+                <span style="color: red; text-align: center;">{{signupResMsg}}</span>
+              </div>
+              
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" (click)="singUp(signupForm.value)" class="btn btn-success">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
 </body>
 
 </html>

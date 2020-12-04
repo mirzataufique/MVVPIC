@@ -1,79 +1,75 @@
-<h2>Student Report</h2>
+<h4 style="margin:30px;">Student Report</h4>
+
 <div class="row">
+    
     <div id="fileds" class="col-sm-3">
-        <label for="EMT_Id" class="col-sm-8 col-form-label">Student Id</label>
+        <label for="EMT_Id" class="col-sm-8 col-form-label">Fiter By Id</label>
         <div class="col-sm-12">
-            <input [(ngModel)]="std_id" type="text" class="form-control" placeholder="Enter Student Id"
+            <input [(ngModel)]="std_id" type="text" (keyup)='search($event.target.value)' class="form-control" placeholder="Enter Student Id"
                 name="std_id">
         </div>
-        
+        {{std_id |json}}
     </div>
     <div id="fileds" class="col-sm-3">
-        <label for="EMT_Id" class="col-sm-8 col-form-label">Name</label>
+        <label for="EMT_Id" class="col-sm-8 col-form-label">Filter By Name</label>
         <div class="col-sm-12">
-            <input [(ngModel)]="std_name" type="text" class="form-control" placeholder="Enter the Studdent Name"
+            <input [(ngModel)]="std_name" type="text"  class="form-control" placeholder="Enter Student Name"
                 name="std_email">
         </div>
     </div>
 
-    <div class="btnColl col-sm-1">
-        <button class="btn btn-primary">Filter</button>
+    <div class="btnColl col-sm-1 form-control">
+        <button class="btn btn-primary" (click)="filter($event)">Filter</button>
     </div>
-    <div class="btnColl col-sm-1">
+    <div class="btnColl col-sm-1 form-control">
         <button class="btn btn-primary">Export</button>
-       
     </div>
 </div>
 <!-- data row -->
-<div class="dataRow table-responsive">
-    <table class="table" #dt>
+<div class="dataRow table-responsive" >
+    <table class="table" *ngIf="tData">
         <thead>
             <tr>
-                <th scope="col">Student ID</th>
-                <th scope="col">Student Name</th>
-                <th scope="col">Father's Name</th>
-                <th scope="col">Mother's Name</th>
-                <th scope="col">Date Of birth</th>
-                <th scope="col">Address</th>
-                <th scope="col">Mobile</th>
-                <th scope="col">Department</th>
-                <th scope="col">Email</th>
+                <th>Student ID</th>
+                <th >Student Name</th>
+                <th >Father's Name</th>
+                <th >Mother's Name</th>
+                <th >DOB</th>
+                <th >Address</th>
+                <th >Mobile</th>
+                <th >Department</th>
+                <th >Email</th>
+                <th>Actions</th>
             </tr>
         </thead>
 
-        <!-- <tr>helloertfghyujki{{AllData | json}}</tr> -->
+        <!-- <tr>hello--{{Data | json}}</tr> -->
         <tbody>
-            <tr *ngFor="let std of AllData[0]">
-                <td>{{std.std_id}}</td>
-                <td>{{std.std_name}}</td>
-                <td>{{std.std_father}}</td>
-                <td>{{std.std_mother}}</td>
-                <td>{{std.std_dob}}</td>
-                <td>{{std.std_address}}</td>
-                <td>{{std.std_mobile}}</td>
-                <td>{{std.std_department}}</td>
-                <td>{{std.std_email}}</td>
-            </tr>
-            <tr *ngFor="let std of quizData[0]">
-                <td>{{std.Que_Id}}</td>
-                <td>{{std.Que_Desc}}</td>
-                <td>{{std.Image_Name}}</td>
-                <td>{{std.Option1}}</td>
-                <td>{{std.Option2}}</td>
-                <td>{{std.Option3}}</td>
-                <td>{{std.Option4}}</td>
-                <td>{{std.Answer}}</td>
-            
+            <!-- {{Data[0]._id | json}} -->
+            <tr *ngFor="let val of Data">
+                
+                <td>{{val._id}}</td>
+                <td>{{val.std_name}}</td>
+                <td>{{val.std_father}}</td>
+                <td>{{val.std_mother}}</td>
+                <td>{{val.std_dob}}</td>
+                <td>{{val.std_address}}</td>
+                <td>{{val.std_mobile}}</td>
+                <td>{{val.std_department}}</td>
+                <td>{{val.std_email}}</td>
+                <!-- <td><button type="submit"  (click)="filter(std_id)" class="btn btn-success btn-block login-btn">Edit</button></td> -->
+                <td><button type="submit" (click)="delete(val._id)" class="btn btn-danger btn-block login-btn">Delete</button></td>
+                <!-- <td>{{val.marksheetImg}}</td> -->
             </tr>
         </tbody>
       
     </table>
     <!-- Pagination -->
-    <div class="paginate text-right">
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
-    </div>
+   
 </div>
-
+<div class="paginate text-right">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
 <div>
-    {{AllData}}
+    <!-- {{AllData}} -->
 </div>

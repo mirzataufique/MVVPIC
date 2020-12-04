@@ -1,19 +1,17 @@
-.banner{
-    width:100%;
-    height: 50px;
-}
+
 
     .container{
-        background-color:rgb(255, 255, 255);
+        background-color:rgb(221, 21, 21);
         height: auto;
+        width: 100%;
         margin-top: 25px;
-        border: 2px solid rgb(31, 168, 31);
-        border-radius: 5px;
-        border-style: round;
+        /* border: 2px solid rgb(31, 168, 31); */
+        /* border-radius: 5px;
+        border-style: round; */
     } 
     #fileds{
         
-        padding:px;
+        padding: 1px;
         padding-left: 24px;
         /* padding-right: 22px; */
         margin-top: 10px;
@@ -22,6 +20,7 @@
     }
     body{
         background-color: lightgrey;
+        zoom: 0;
     }
     .instruction{
         margin-left: 40px;
@@ -35,13 +34,18 @@
 .btnColl{
     box-shadow: none;
     border: none;
-    margin-top: 47px;
-    
+    margin-top: 38px;
+    width: 100%;
+    margin-left:5%;
+    content: center;
+    height: max-content;
 }
 
 .btn{
-    padding-left: 20px;
-    margin-right: 6px;
+    padding: 5px;
+    margin-right: none;
+    width: 50%;
+    zoom: 0;
 }
 #radiobutton{
     padding-left: 3px;
@@ -63,7 +67,12 @@
     float: right;
     border:2px solid blue;
     margin-top: 0px;
-    background-color: GRAY;
+    background-color:none;
+}
+
+
+ .ngx-pagination button:hover {
+    background:none;
 }
 
 .nav-link{
@@ -77,4 +86,8 @@
 .nav-item{
     list-style-type: none;
     float: left;
+}
+.btn{
+    height: 15%;
+    width: 100%;
 }

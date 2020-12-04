@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentListService } from 'src/app/Services/student-list.service';
 import { GenerateCSVService } from 'src/app/Services/generate-csv.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import {MainControllerService} from '../../Services/mainController.service'
+import { MainControllerService } from '../../Services/mainController.service'
+import { concatAll } from 'rxjs/operators';
+import { Ng2SmartTableModule, LocalDataSource } from 'ng2-smart-table';
 
 
 @Component({
@@ -17,53 +18,60 @@ export class StdreportComponent implements OnInit {
   p: Number = 1;
   count: Number = 5;
 
-
+  source: LocalDataSource;
 
   constructor(private _mainService: MainControllerService,
     private _csvService: GenerateCSVService,
-    private http: HttpClient) { }
+    private http: HttpClient) {this.source = new LocalDataSource(this.Data)}
   pageChanged(event) {
     this.config.currentPage = event;
   }
 
-  AllData: any = [];
-  quizData:any=[];
+  Data: any = [];
   ngOnInit() {
     console.log("student component called")
-
+    this.tData = true;
     this._mainService.getStudents().subscribe((result) => {
-      // console.log("my result-- ", result["data"])
-      this.AllData.push(result['data']);
-      console.log("alldata------------>",this.AllData)
-      // })
-      // console.log("my data-- ",alldata);
+      this.Data = result;
+      console.log("alldata------------>", this.Data)
     })
-    // let AllData = this._studentService.getStudents()
-    // obs.subscribe((data) => {
-
-    //   this.AllData = data;
-    // })
-
-    // console.log("====>", this.AllData);
-
-
   }
   std_id;
-  std_name
-  filterClick() {
-    console.log("------=",this.std_id);
-    console.log("Filter click called",event);
-    // this._csvService.getById(id: any;);
-    this._mainService.getStudentsByid(this.std_id).subscribe((result) => {
-   
-     
-    });
-  }
-  exportClick(AllData:any) {
-    console.log("export click called",this.AllData);
   
-    this._csvService.download_CSV(this.AllData, 'studentreport');
+  filter() {
+    console.log("------=", this.std_id);
+    this._mainService.getStudentsByid(this.std_id).subscribe((result) => {
+        console.log(result)
+        this.Data.push(result);
+    });
+  };
+  filterData:any []
+  search(term: string) {
+    console.log("search=====>");
+    
+    if(!term) {
+      this.filterData = this.Data;
+    } else {
+      this.filterData = this.Data.filter(x => 
+         x.name.trim().toLowerCase().includes(term.trim().toLowerCase())
+      );
+    }
+  };
+
+  tData: boolean = false;
+  delete(_id){
+    console.log("inside Delete-->",_id);
+    this.tData = true;
+    this._mainService.deteleById(_id).subscribe((result)=>{
+      console.log(result);
+      this.Data.push(result);
+    })
+  }
+  exportClick(AllData: any) {
+    console.log("export click called", this.Data);
+    this._csvService.download_CSV(this.Data, 'studentreport');
 
   }
+  
 
 }
