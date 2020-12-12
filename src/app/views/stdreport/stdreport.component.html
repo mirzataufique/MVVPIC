@@ -1,75 +1,76 @@
-<h4 style="margin:30px;">Student Report</h4>
-
-<div class="row">
-    
-    <div id="fileds" class="col-sm-3">
-        <label for="EMT_Id" class="col-sm-8 col-form-label">Fiter By Id</label>
-        <div class="col-sm-12">
-            <input [(ngModel)]="std_id" type="text" (keyup)='search($event.target.value)' class="form-control" placeholder="Enter Student Id"
-                name="std_id">
+<div class="container">
+    <h4>Student Report</h4>
+    <div class="row">
+        <div id="fileds" class="col-sm-3">
+            <label for="EMT_Id" class="col-sm-8 col-form-label">Fiter By Id</label>
+            <div class="col-sm-12">
+                <input [(ngModel)]="std_id" type="text" (keyup)='search($event.target.value)' class="form-control"
+                    placeholder="Enter Student Id" name="std_id">
+            </div>
+            {{std_id |json}}
         </div>
-        {{std_id |json}}
-    </div>
-    <div id="fileds" class="col-sm-3">
-        <label for="EMT_Id" class="col-sm-8 col-form-label">Filter By Name</label>
-        <div class="col-sm-12">
-            <input [(ngModel)]="std_name" type="text"  class="form-control" placeholder="Enter Student Name"
-                name="std_email">
+        <div id="fileds" class="col-sm-3">
+            <label for="EMT_Id" class="col-sm-8 col-form-label">Filter By Name</label>
+            <div class="col-sm-12">
+                <input [(ngModel)]="std_name" type="text" class="form-control" placeholder="Enter Student Name"
+                    name="std_email">
+            </div>
+        </div>
+
+        <div class="btnColl col-sm-1 form-control">
+            <button class="btn btn-primary" (click)="filter($event)">Filter</button>
+        </div>
+        <div class="btnColl col-sm-1 form-control">
+            <button class="btn btn-primary">Export</button>
         </div>
     </div>
+    <!-- data row -->
+    <div class="dataRow table-responsive">
+        <table class="table" *ngIf="tData">
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Student Name</th>
+                    <th>Father's Name</th>
+                    <th>Mother's Name</th>
+                    <th>DOB</th>
+                    <th>Address</th>
+                    <th>Mobile</th>
+                    <th>Department</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
 
-    <div class="btnColl col-sm-1 form-control">
-        <button class="btn btn-primary" (click)="filter($event)">Filter</button>
-    </div>
-    <div class="btnColl col-sm-1 form-control">
-        <button class="btn btn-primary">Export</button>
-    </div>
-</div>
-<!-- data row -->
-<div class="dataRow table-responsive" >
-    <table class="table" *ngIf="tData">
-        <thead>
-            <tr>
-                <th>Student ID</th>
-                <th >Student Name</th>
-                <th >Father's Name</th>
-                <th >Mother's Name</th>
-                <th >DOB</th>
-                <th >Address</th>
-                <th >Mobile</th>
-                <th >Department</th>
-                <th >Email</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
+            <!-- <tr>hello--{{Data | json}}</tr> -->
+            <tbody>
+                <!-- {{Data[0]._id | json}} -->
+                <tr *ngFor="let val of Data">
 
-        <!-- <tr>hello--{{Data | json}}</tr> -->
-        <tbody>
-            <!-- {{Data[0]._id | json}} -->
-            <tr *ngFor="let val of Data">
-                
-                <td>{{val._id}}</td>
-                <td>{{val.std_name}}</td>
-                <td>{{val.std_father}}</td>
-                <td>{{val.std_mother}}</td>
-                <td>{{val.std_dob}}</td>
-                <td>{{val.std_address}}</td>
-                <td>{{val.std_mobile}}</td>
-                <td>{{val.std_department}}</td>
-                <td>{{val.std_email}}</td>
-                <!-- <td><button type="submit"  (click)="filter(std_id)" class="btn btn-success btn-block login-btn">Edit</button></td> -->
-                <td><button type="submit" (click)="delete(val._id)" class="btn btn-danger btn-block login-btn">Delete</button></td>
-                <!-- <td>{{val.marksheetImg}}</td> -->
-            </tr>
-        </tbody>
-      
-    </table>
-    <!-- Pagination -->
-   
-</div>
-<div class="paginate text-right">
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
-</div>
-<div>
-    <!-- {{AllData}} -->
+                    <td>{{val._id}}</td>
+                    <td>{{val.std_name}}</td>
+                    <td>{{val.std_father}}</td>
+                    <td>{{val.std_mother}}</td>
+                    <td>{{val.std_dob}}</td>
+                    <td>{{val.std_address}}</td>
+                    <td>{{val.std_mobile}}</td>
+                    <td>{{val.std_department}}</td>
+                    <td>{{val.std_email}}</td>
+                    <!-- <td><button type="submit"  (click)="filter(std_id)" class="btn btn-success btn-block login-btn">Edit</button></td> -->
+                    <td><button type="submit" (click)="delete(val._id)"
+                            class="btn btn-danger btn-block login-btn">Delete</button></td>
+                    <!-- <td>{{val.marksheetImg}}</td> -->
+                </tr>
+            </tbody>
+
+        </table>
+        <!-- Pagination -->
+
+    </div>
+    <div class="paginate text-right">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    <div>
+        <!-- {{AllData}} -->
+    </div>
 </div>

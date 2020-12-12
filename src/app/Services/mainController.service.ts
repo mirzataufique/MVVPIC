@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
-import { AuthService } from 'src/app/Services/auth.service';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
+import {environment} from '../../environments/environment';
 
+
+
+const baseurl = environment.baseurl;
+const token = localStorage.getItem('token'); 
+console.log("get Token inside main service",token)
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json',
+  "Authorization": "Bearer " + token })
 }
-const baseurl = 'http://localhost:3000/';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -41,7 +48,7 @@ export class MainControllerService {
   // };
   getStudents(): Observable<any> {
     console.log("inside service====",)
-    return this.http.get(baseurl + "student").pipe(map(res => res))
+    return this.http.get(baseurl + "student",).pipe(map(res => res))
 
   };
 

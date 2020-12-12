@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const checkAuth = require('../middleWare/check-auth');
 
 
+
 router.get('/', (req, res, next) => {
     // Users.find({userType: 'student'}) // get where user Tpye is Student
     Users.find()
@@ -20,7 +21,6 @@ router.get('/', (req, res, next) => {
             } else {
                 res.status(404).json({ message: "No data found..!" });
             }
-
         })
         .catch(err => {
             console.log(err)
@@ -70,45 +70,41 @@ router.post('/signup', (req, res, next) => {
                     }
                 })
 
-
             }
         });
 });
 
-router.post('/login',(req, res, next) => {
-    console.log("inside login -->",req.body);
-    Users.find({ userEmail: req.body.userEmail })
+router.post('/login', (req, res, next) => {
+    console.log("inside login -->", req.body);
+    Users.find({ userEmail: req.body.userEmail, userType: req.body.userType })
         .exec()
         .then(user => {
             if (user.length < 1) {
                 return res.status(401).json({
-                    message: "Auth Failed"
+                    message: "Authentication Failed"
                 });
             }
             bcrypt.compare(req.body.userPassword, user[0].userPassword, (err, result) => {
                 if (err) {
                     return res.status(401).json({
-                        message: "Auth Failed"
+                        message: "Authentication Failed"
                     });
                 }
                 if (result) {
                     const token = jwt.sign(
                         {
                             userEmail: user[0].userEmail,
-                            user_id: user[0]
+                            userId: user[0]._id
                         },
                         process.env.JWT_KEY,
                         {
                             expiresIn: "1hr"
                         }
                     );
-                    return res.status(200).json({
-                        message: "Successful",
-                        then:token
-                    });
+                    return res.status(200).json(token);
                 }
                 return res.status(401).json({
-                    message: "Auth Failed"
+                    message: "Authentication Failed"
                 });
             });
         })
@@ -119,8 +115,31 @@ router.post('/login',(req, res, next) => {
                 error: err
             });
         });
-
 });
+
+// router.get('/userEmail', verifyT, (req, res, next) => {
+//     console.log("res--",res)
+// return  res.status(200).json(this.decodedToken.userEmail);
+// });;
+
+// var decodedToken='';
+// function verifyToken(req, res, next) {
+//     let token = req.query.token;
+//     console.log("Toekn for verifcation")
+//     jwt.verify(token, process.env.JWT_KEY, (err, tokendata) => {
+//         if (err) {
+//             res.status(500).json({
+//                 message: "Unauthorized requiest",
+//                 error: err
+//             });
+//         }
+//         if(tokendata){
+//             decodedToken :tokendata;
+//             next();
+//         }
+//     });
+// };
+
 router.get('/:user_id', (req, res, next) => {
     const id = req.params.user_id;
     Users.findById(id)
@@ -148,7 +167,6 @@ router.patch('/:user_id', (req, res, next) => {
     res.status(200).json({
         message: 'update a single users',
         user_id: user_id
-
     })
 })
 router.delete('/:user_id', (req, res, next) => {

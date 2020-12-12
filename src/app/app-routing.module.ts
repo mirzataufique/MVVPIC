@@ -7,12 +7,12 @@ import { AddmissionComponent } from './views/addmission/addmission.component';
 import { StdreportComponent } from './views/stdreport/stdreport.component';
 import { AuthService } from './Services/auth.service';
 import { LoginComponent } from './views/login/login.component';
-import {FacultyComponent} from './views/faculty/faculty.component';
+import { FacultyComponent } from './views/faculty/faculty.component';
 import { FltreportComponent } from './views/fltreport/fltreport.component';
 import { FooterComponent } from './views/footer/footer.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
-
+import { RegisterComponent } from './views/register/register.component';
 
 
 const routes: Routes = [
@@ -20,55 +20,61 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  }, {
+    path: 'register',
+    component: RegisterComponent
   },
   {
     path: 'home',
     canActivate: [AuthService],
-    data:['ADMIN'],
+    data: ['ADMIN'],
     component: HomepageComponent
   },
   {
     path: 'dashboard',
     canActivate: [AuthService],
-    data:['ADMIN'],
+    data: ['ADMIN'],
     component: DashboardComponent
   },
   {
     path: 'footer',
     canActivate: [AuthService],
-    data:['ADMIN'],
+    data: ['ADMIN'],
     component: FooterComponent
   },
-  
   {
-    path: 'addmission',
+    path: 'admission',
     canActivate: [AuthService],
-    data:['ADMIN'],
+    data: ['ADMIN'],
     component: AddmissionComponent
   },
   {
     path: 'report',
     canActivate: [AuthService],
-    data:['ADMIN'],
+    data: ['ADMIN'],
     component: StdreportComponent
   },
   {
     path: 'faculty',
     canActivate: [AuthService],
-    data:['ADMIN'],
+    data: ['ADMIN'],
     component: FacultyComponent
   },
   {
     path: 'fcltreport',
     canActivate: [AuthService],
-    data:['ADMIN'],
+    data: ['ADMIN'],
     component: FltreportComponent
   },
 
   {
     path: '',
-    redirectTo: "/dashboard", 
+    redirectTo: "home",
     pathMatch: 'full'
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
   }
 ];
 
@@ -77,4 +83,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponent = [HomepageComponent, AddmissionComponent, StdreportComponent, LoginComponent,FltreportComponent,FooterComponent,PageNotFoundComponent];
+export const routingComponent = [HomepageComponent, AddmissionComponent, StdreportComponent, LoginComponent, RegisterComponent, FltreportComponent, FooterComponent, PageNotFoundComponent];

@@ -3,12 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError ,retry} from 'rxjs/operators';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
+import {environment} from '../../environments/environment';
 
-
+const baseurl = environment.baseurl;
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 }
-const baseurl = 'http://localhost:3000/';
+
 
 @Injectable({
   providedIn: 'root'
@@ -50,18 +51,7 @@ export class AuthService implements CanActivate {
   //   return this.http.get(this.baseurl+"login/"+username+"/"+pass+"").pipe(map(res =>res));
 
   //   }
-  login(data): Observable<any> {
-    console.log("stdData- in service--->", data)
-    return this.http.post(baseurl + 'user/login', data, httpOptions)
-      .pipe(retry(1),map((data: any) => {
-        return data;
-      }),
-        catchError(error => {
-          return throwError(error);
-        })
-      )
 
-  }
 
 
 

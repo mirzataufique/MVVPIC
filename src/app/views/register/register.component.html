@@ -1,0 +1,78 @@
+<div class="container-fluid stylish-form">
+    <h2 class="text-center">Welcome to the Maharashi valmiki Vidya Peeth Inter Colege</h2>
+    <p style="margin-left: 500px;"><i>BahisaTiker Sant Kabir Nagar UP- 272165.</i></p>
+    <div class="row mar20">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="inner-section">
+                <form method="POST" [formGroup]="registerForm">
+                    <div class="mar20 inside-form">
+                        <h2 class="font_white text-center">SIGN UP</h2>
+                        <ul>
+                            <!-- <li class="icon-holder dsp-flex">
+                  <i class="fa fa-facebook "></i>
+                </li>
+                <li class="icon-holder dsp-flex">
+                  <i class="fa fa-twitter "></i>
+                </li> -->
+                            <li class="icon-holder dsp-flex">
+                                <i class="fa fa-google "></i>
+                            </li>
+                        </ul>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-pencil "></i></span>
+                            <select class="form-control" formControlName="userType" name="select">
+                                <option>Select...</option>
+                                <option>admin</option>
+                                <option>student</option>
+                            </select>
+                        </div>
+                        <span *ngIf="isValid('userName')">Invalid User Name</span>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                            <input type="text" class="form-control" formControlName="userName" name="text"
+                                placeholder="User Name...">
+                        </div>
+                        <span *ngIf="isValid('userName')">Invalid User Name</span>
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope "></i></span>
+                            <input type="email" class="form-control" formControlName="userEmail" name="text"
+                                placeholder="Email Id...">
+                        </div>
+                        <span *ngIf="isValid('userEmail')">Invalid User Email</span>
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock "></i></span>
+                            <input type="password" class="form-control" formControlName="userPassword" name="text"
+                                placeholder="Password...">
+                        </div>
+                        <span *ngIf="isValid('userPassword')">Invalid Password</span>
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock "></i></span>
+                            <input type="password" class="form-control" name="text" formControlName="cnfPassword"
+                                placeholder="Confirm Password...">
+                        </div>
+                        <span *ngIf="isValid('cnfPassword')">Password did not match</span>
+
+                        <div class="footer text-center">
+                            <a (click)="register()" routerLinkActive="active"
+                                class="btn btn-neutral btn-round btn-lg">Signup</a>
+                        </div>
+                       
+                        <div class="footer text-center" style="text-align:center; background-color: green;">
+                            {{successMessage}}
+                        </div>
+                        <div class="footer text-center">
+                            <a (click)="moveToLogin()"  routerLinkActive="active"
+                                class="btn btn-neutral btn-round btn-lg">Login</a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>

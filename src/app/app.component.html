@@ -1,5 +1,5 @@
 
-<app-homepage *ngIf="routes.url !=='/home'"></app-homepage>
+<app-homepage *ngIf="routes.url !=='/home' && routes.url !=='/login'"></app-homepage>
     <router-outlet></router-outlet> 
 <app-footer *ngIf="routes.url !=='/login'" ></app-footer>
 

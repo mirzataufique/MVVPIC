@@ -15,6 +15,7 @@ const connectDB = require('./MongoDb/conncetion');
 const studentRoutes = require('./api/routes/student');
 const userRoutes = require('./api/routes/user');
 
+
 // middlewares---------->
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -51,8 +52,7 @@ app.use('/user', userRoutes);
 
 
 
-
-//error handling if routes ot found
+//error handling if routes not found
 app.use((req, res, next) => {
     const error = new Error('Not Found');
     error.status = 404;

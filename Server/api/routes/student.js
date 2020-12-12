@@ -13,7 +13,6 @@ const storage = multer.diskStorage({
     filename: function (res, file, callbback) {
         callbback(null, file.originalname + new Date().toISOString());
     }
-
 });
 const fileFilter = (req, file, callbback) => {
     // if (file.mimetype === '/image/jpg' || file.mimetype === '/image/png') {
@@ -51,7 +50,7 @@ router.get('/', (req, res, next) => {
         });
 });
 // router.post('/', upload.single('marksheetImg'), (req, res, next) => {
-    router.post('/',(req, res, next) => {
+    router.post('/',checkAuth,(req, res, next) => {
     console.log("post hit--->", req.body)
     const students = new Students({
         _id: new mongoose.Types.ObjectId(),
@@ -74,16 +73,16 @@ router.get('/', (req, res, next) => {
                 Createstudents: result
             })
         })
-        .catch(err => {
+        .catch(error => {
             console.log(err)
             res.status(500).json({
                 message: "Data Writing failed",
-                error: err
+                error: error
             });
         });
 
 });
-router.get('/:std_id', (req, res, next) => {
+router.get('/:std_id',checkAuth, (req, res, next) => {
     const id = req.params.std_id;
     Students.findById(id)
         .exec()

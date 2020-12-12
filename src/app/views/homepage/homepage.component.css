@@ -15,6 +15,19 @@ html, body {
     height: auto;
     /* padding-bottom:5%; */
 }
+.logedButton{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 20px;
+    height: 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 2px;
+}
 .navbar {
     background: darkgreen;
     color: white;
@@ -92,18 +105,17 @@ html, body {
 }
 
 .navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
-    color: #fff;
-    background: darkgreen;
+    color: white;
+    /* background: darkgreen; */
     padding-top: 8px;
     padding-bottom: 4px;
     vertical-align: middle;
     border: none;
-}
+    }
 
 .navbar .nav .btn-primary:hover, .navbar .nav .btn-primary:focus {
     color: #fff;
     outline: none;
-    background: darkgreen;
 }
 
 .navbar .navbar-right li:first-child a {
@@ -273,9 +285,6 @@ html, body {
     background-color: none;
 }
 
-.w3-modal-content:hover {
-    /* background-color: darkgreen; */
-}
 
 .w3-hover-teal:hover {
     background-color: red;

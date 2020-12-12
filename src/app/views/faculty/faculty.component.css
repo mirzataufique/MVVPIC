@@ -1,0 +1,79 @@
+.banner{
+    width:100%;
+    height: 50px;
+}
+
+    .container{
+        background-color:rgb(255, 255, 255);
+        height: auto;
+        margin-top: 25px;
+        padding-bottom: 20px;
+        border: 2px solid green;
+        border-radius: 5px;
+        border-style: round;
+    } 
+    #fileds{
+        
+        padding:px;
+        padding-left: 24px;
+        /* padding-right: 22px; */
+        margin-top: 10px;
+        margin-right:0px;
+        border-radius: 4px; 
+    }
+    body{
+        background-color: lightgrey;
+    }
+    .instruction{
+        margin-left: 40px;
+    }
+    
+    .btnRow{
+    float: right;
+    margin-top: 10px;
+    height: 100px;
+    }
+.btnColl{
+    box-shadow: none;
+    border: none;
+    /* margin-top: 6.6%; */
+    
+}
+.btn{
+margin-left: 4%;
+}
+#radiobutton{
+    padding-left: 3px;
+    margin-right: 4px;
+}
+#select_date{
+    border: none;
+    box-shadow: none;
+    border-bottom: 1px solid #000;
+    border-radius: 0px;
+}
+.dataRow{
+    margin-top: 10px;
+    background-color: #E5E7E9;
+    width: 100%;
+    border-radius: 5px;
+}
+.paginext{
+    float: right;
+    border:2px solid blue;
+    margin-top: 0px;
+    background-color: GRAY;
+}
+
+.nav-link{
+    float: left;
+    margin-right: 23px;
+    list-style-type: none;
+    color : white;
+    
+    
+}
+.nav-item{
+    list-style-type: none;
+    float: left;
+}

@@ -26,6 +26,7 @@
     "bootstrap": "^4.3.1",
     "font-awesome": "^4.7.0",
     "git": "^0.1.5",
+    "morgan": "^1.10.0",
     "ng-uikit-pro-standard": "^1.0.0",
     "ng2-completer": "^9.0.1",
     "ng2-smart-table": "^1.7.2",

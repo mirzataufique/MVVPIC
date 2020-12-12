@@ -1,42 +1,40 @@
 
 
     .container{
-        background-color:rgb(221, 21, 21);
         height: auto;
-        width: 100%;
-        margin-top: 25px;
-        /* border: 2px solid rgb(31, 168, 31); */
-        /* border-radius: 5px;
-        border-style: round; */
+        width: auto;
+        margin-top: 5px;
+        border: 2px solid rgb(31, 168, 31);
+        /* border-radius: 5px;*/
+      border-radius: 4px; 
     } 
     #fileds{
         
         padding: 1px;
-        padding-left: 24px;
+        padding-left: 5px;
         /* padding-right: 22px; */
-        margin-top: 10px;
-        margin-right:0px;
+        margin-top: 10px 0 0 0;
+        /* margin-right:0px; */
         border-radius: 4px; 
     }
-    body{
-        background-color: lightgrey;
-        zoom: 0;
-    }
+   
     .instruction{
         margin-left: 40px;
     }
     
     .btnRow{
     float: right;
+    padding-left: 5px;
     margin-top: 100px;
     height: 100px;
+    width:auto;
     }
 .btnColl{
     box-shadow: none;
     border: none;
     margin-top: 38px;
     width: 100%;
-    margin-left:5%;
+    margin-left:2%;
     content: center;
     height: max-content;
 }
@@ -44,7 +42,7 @@
 .btn{
     padding: 5px;
     margin-right: none;
-    width: 50%;
+    width: 100%;
     zoom: 0;
 }
 #radiobutton{
@@ -59,9 +57,10 @@
 }
 .dataRow{
     margin-top: 10px;
-    background-color: #E5E7E9;
+    background-color: #bdc1c5;
     width: 100%;
     border-radius: 5px;
+    padding-left: 5px;
 }
 .paginext{
     float: right;
@@ -86,8 +85,4 @@
 .nav-item{
     list-style-type: none;
     float: left;
-}
-.btn{
-    height: 15%;
-    width: 100%;
 }

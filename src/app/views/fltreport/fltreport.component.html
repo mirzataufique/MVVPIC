@@ -1,10 +1,64 @@
-<p>fltreport in progress........!</p>
-<p>fltreport in progress........!</p>
+<div class="container">
+    <h4>Faculty Report</h4>
+    <div class="row">
+        <div id="fileds" class="col-sm-3">
+            <label for="EMT_Id" class="col-sm-8 col-form-label">Fiter By Id</label>
+            <div class="col-sm-12">
+                <input [(ngModel)]="std_id" type="text" (keyup)='search($event.target.value)' class="form-control"
+                    placeholder="Enter Student Id" name="std_id">
+            </div>
+            <!-- {{logedInUser.userEmail |json}} -->
+        </div>
+        <div id="fileds" class="col-sm-3">
+            <label for="EMT_Id" class="col-sm-8 col-form-label">Filter By Name</label>
+            <div class="col-sm-12">
+                <input [(ngModel)]="std_name" type="text" class="form-control" placeholder="Enter Student Name"
+                    name="std_email">
+            </div>
+        </div>
 
-<p>fltreport in progress........!</p>
+        <div class="btnColl col-sm-1 form-control">
+            <button class="btn btn-primary" (click)="filter($event)">Filter</button>
+        </div>
+        <div class="btnColl col-sm-1 form-control">
+            <button class="btn btn-primary">Export</button>
+        </div>
+    </div>
+    <!-- data row -->
+    <div class="dataRow table-responsive">
+        <table class="table" >
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User Email</th>
+                    <th>Usere Type</th>    
+                    <th>Usere Photo</th>    
+                    <th>Actions</th>
+                </tr>
+            </thead>  
+            <tbody>
+                <!-- {{Data[0]._id | json}} -->
+                <tr *ngFor="let data of userData">
+                    <td>{{data._id}}</td>
+                    <td>{{data.userEmail}}</td>
+                    <td>{{data.userType}}</td>
+                    <td>{{data.userPhoto}}</td>
+                  
+                    <!-- <td><button type="submit"  (click)="filter(std_id)" class="btn btn-success btn-block login-btn">Edit</button></td> -->
+                    <td><button type="submit" (click)="delete(data._id)"
+                            class="btn btn-danger btn-block login-btn">Delete</button></td>
+                    <!-- <td>{{val.marksheetImg}}</td> -->
+                </tr>
+            </tbody>
 
-<p>fltreport in progress........!</p>
+        </table>
+        <!-- Pagination -->
 
-<p>fltreport in progress........!</p>
-
-<p>fltreport in progress........!</p>
+    </div>
+    <div class="paginate text-right">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    <div>
+        <!-- {{AllData}} -->
+    </div>
+</div>

@@ -39,7 +39,7 @@ export class AddmissionComponent implements OnInit {
       console.log('An unexpected error occured', error.error.message);
       this.msg = error.error.message;
       this.errorMsg = true;
-      this.router.navigate(['/addmission']);
+      this.router.navigate(['/admission']);
     }, () => {
       console.log('Completed');
     });
